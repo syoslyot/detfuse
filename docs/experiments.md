@@ -14,23 +14,26 @@ ollama pull qwen2.5:0.5b
 
 ## 資料集
 
-`data/training_data.json` — 583 筆，格式：
+`data/training_data.json` — 訓練集，格式：
 ```json
 [
-  {"label": 1, "text": "研討會多的便當...", "hash": "abc123"},
-  {"label": 0, "text": "免費課程報名...",   "hash": "def456"}
+  {"text": "研討會多的便當...", "hash": "abc123", "query": "便當", "source": "bento", "label": 1},
+  {"text": "免費課程報名...",   "hash": "def456", "query": "免費 活動", "source": "free_event", "label": 0}
 ]
 ```
 
-| | 筆數 |
-|--|------|
-| 正例（免費食物）| 350 |
-| 負例（不是）| 233 |
-| 合計 | 583 |
+`data/test_data.json` — 測試集，同格式。
 
-**注意**：這份資料是用關鍵字篩選爬出來的，正例比例（60%）遠高於真實社團（~1-3%）。
-適合拿來**訓練和調整參數**，不適合估算真實精度。
-真實精度要等 `eval.json`（無篩選的 feed 資料）建好才能測。
+| | 筆數 | 正例 | 負例 | 正負比 |
+|--|------|------|------|------|
+| `training_data.json` | 894 | 212 | 682 | 1:3.2 |
+| `test_data.json` | 234 | 58 | 176 | 1:3.0 |
+
+來源：11 個 query，stratified split by (label × source)，seed=42，80/20。
+
+**標注方式**：由 Claude 依語意判斷（非 L1 regex 自標），詳見 [docs/labeling_criteria.md](labeling_criteria.md)。
+
+**注意**：正例比 ~24%，遠高於真實社團（~1–3%）。適合訓練和調參，**不能直接估算真實 Precision**。
 
 ## Grid Search
 
