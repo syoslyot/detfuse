@@ -31,7 +31,8 @@ detfuse/
   detector.py          原始偵測器（從 freehiero 複製，可自由修改）
   config.py            Ollama 連線設定
   data/
-    training_data.json 583 筆標注資料（正 350 / 負 233）
+    training_data.json 894 筆訓練資料（正 212 / 負 682，Claude 標注）
+    test_data.json     234 筆測試資料（正 58 / 負 176，Claude 標注）
   experiments/
     fusion.py          L1/L2 融合公式研究主檔
     colab_detector_test.ipynb  原有 Colab 測試 notebook
