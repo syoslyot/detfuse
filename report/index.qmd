@@ -1,0 +1,15 @@
+# 摘要 {.unnumbered}
+
+**中文摘要**
+
+（待撰寫）
+
+**關鍵字**：貼文偵測、關鍵字比對、大型語言模型、融合決策
+
+---
+
+**Abstract**
+
+（待撰寫）
+
+**Keywords**: post detection, keyword matching, large language model, decision fusion
