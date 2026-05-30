@@ -12,6 +12,32 @@ ollama serve
 ollama pull qwen2.5:0.5b
 ```
 
+## Colab 實驗環境
+
+notebook 位於 `experiments/detector_eval.ipynb`，托管在 GitHub，可直接從以下連結在 Colab 開啟：
+
+```
+https://colab.research.google.com/github/syoslyot/detfuse/blob/feature/parallel-fusion/experiments/detector_eval.ipynb?authuser=1
+```
+
+> `?authuser=1` 固定保留。feature 分支 merge 到 main 後，URL 裡的分支名稱要改成 `main`。
+
+## 訓練與測試資料
+
+標記資料位於 `data/categories/free_food/`，由 Claude Code 判斷標記：
+
+| 檔案 | 筆數 | 正例 | 負例 | 用途 |
+|------|------|------|------|------|
+| `training_data.json` | 894 | 212 | 682 | 訓練 / 調參 |
+| `test_data.json` | 234 | 58 | 176 | 評估（Colab 使用這個） |
+
+欄位：`text`、`label`（1 = 免費食物，0 = 非）、`hash`、`query`、`source`
+
+這兩個檔案已加入 git 追蹤（`data/` 其餘仍 gitignore）。
+Colab notebook 透過 GitHub raw URL 直接載入，不需手動上傳或掛載 Drive。
+
+> `data/eval.json` 標記不完整（254 筆中只有 4 筆正例），不用於評估。
+
 ## 資料集
 
 `data/training_data.json` — 訓練集，格式：

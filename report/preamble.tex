@@ -1,0 +1,35 @@
+% 中文支援（XeLaTeX）
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Serif CJK TC}
+\setCJKsansfont{Noto Sans CJK TC}
+\setCJKmonofont{Noto Sans Mono CJK TC}
+
+% 行距（NCKU 規定 1.5 倍行距）
+\usepackage{setspace}
+\onehalfspacing
+
+% 數學
+\usepackage{amsmath, amssymb, amsthm}
+
+% 圖表
+\usepackage{booktabs}   % 好看的表格線
+\usepackage{float}      % 強制圖表位置 [H]
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+% 演算法
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% 超連結
+\usepackage{hyperref}
+
+% 章節標題中文化
+\renewcommand{\contentsname}{目錄}
+\renewcommand{\listfigurename}{圖目錄}
+\renewcommand{\listtablename}{表目錄}
+\renewcommand{\bibname}{參考文獻}
+\renewcommand{\chaptername}{第}
+\renewcommand{\figurename}{圖}
+\renewcommand{\tablename}{表}
