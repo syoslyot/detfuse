@@ -22,6 +22,21 @@ https://colab.research.google.com/github/syoslyot/detfuse/blob/develop/experimen
 
 > `?authuser=1` 固定保留。平時指向 `develop`，release merge 到 main 後改成 `main`。
 
+## 實驗報告
+
+實驗紀錄統一放在 `report/experiment/`，檔名格式：`experiment_XX.md`。
+
+## HuggingFace 模型
+
+Fine-tuned LoRA adapter：[syoslyot/qwen-detfuse-finetuned](https://huggingface.co/syoslyot/qwen-detfuse-finetuned)
+
+```python
+from peft import PeftModel
+model = PeftModel.from_pretrained(base_model, 'syoslyot/qwen-detfuse-finetuned')
+```
+
+> 基礎模型：`Qwen/Qwen2.5-0.5B-Instruct`，需另外載入。
+
 ## 訓練與測試資料
 
 標記資料位於 `data/categories/free_food/`，由 Claude Code 判斷標記：
