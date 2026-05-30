@@ -22,6 +22,12 @@ https://colab.research.google.com/github/syoslyot/detfuse/blob/develop/experimen
 
 > `?authuser=1` 固定保留。平時指向 `develop`，release merge 到 main 後改成 `main`。
 
+### 存檔工作流程
+
+- 跑完實驗後，存回**當前 feature 分支**即可，不需特別切換到 develop
+- outputs 是 `.ipynb` JSON 的一部分，PR merge 時自動帶進 develop
+- 開新 feature 分支時，同步更新 notebook cell 6 的 `BRANCH` 變數，讓資料載入 URL 指向正確分支
+
 ## 實驗報告
 
 實驗紀錄統一放在 `report/experiment/`，檔名格式：`experiment_XX.md`。
