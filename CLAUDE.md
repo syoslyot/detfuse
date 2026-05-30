@@ -42,4 +42,10 @@ https://colab.research.google.com/github/syoslyot/detfuse/blob/<branch>/experime
 
 - `?authuser=1` 固定保留，確保開啟正確的 Google 帳號
 - Colab URL 平時指向 `develop`，release merge 到 main 後改成 `main`
-- 從哪個分支開啟，就只能存回那個分支（SHA 綁定），請從 `develop` URL 開啟
+
+## Colab 存檔與結果保存
+
+- 跑完實驗後，直接存回**當前 feature 分支**（不需切換到 develop）
+- outputs 存在 `.ipynb` JSON 裡，PR merge 時會一起帶進 develop，無需額外處理
+- notebook cell 6 的 `BRANCH` 變數必須與當前工作分支一致，否則資料載入 URL 會壞掉
+- 開新 feature 分支時，記得同步更新 `BRANCH` 的值
