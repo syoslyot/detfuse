@@ -17,27 +17,8 @@ ollama pull qwen2.5:0.5b
 notebook 位於 `experiments/detector_eval.ipynb`，托管在 GitHub，可直接從以下連結在 Colab 開啟：
 
 ```
-https://colab.research.google.com/github/syoslyot/detfuse/blob/main/experiments/detector_eval.ipynb
+https://colab.research.google.com/github/syoslyot/detfuse/blob/feature/parallel-fusion/experiments/detector_eval.ipynb
 ```
-
-### 讓 Claude 開 Colab 時出現在現有 Chrome 視窗
-
-這個專案的 `.claude/settings.json` 設定 Playwright 透過 CDP 連線到既有 Chrome，而不是開一個新的（沒登入）瀏覽器。
-
-**開啟 debug Chrome**（每次工作 session 開始前跑一次）：
-
-```bash
-google-chrome --remote-debugging-port=9222 &
-```
-
-**關閉**：
-
-```bash
-pkill -f "remote-debugging-port=9222"
-# 或直接關掉 Chrome 視窗
-```
-
-> 其他專案不受影響——只有 detfuse 的 `.claude/settings.json` 有 `--cdp-endpoint` 設定，其他專案的 Playwright 永遠開自己的新視窗。
 
 ## 資料集
 
