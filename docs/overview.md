@@ -128,4 +128,29 @@ detfuse  ←──── 研究、實驗、調參
 freehiero ────► 上線產品，不做實驗
 ```
 
-兩者不自動連動，產品穩定性優先。
+兩者**不自動連動**，這是刻意的設計：產品穩定性優先。
+
+## 目錄結構
+
+```
+detfuse/
+  detector.py          原始偵測器（從 freehiero 複製，可自由修改）
+  config.py            Ollama 連線設定
+  data/
+    categories/
+      free_food/
+        training_data.json  894 筆訓練資料（正 212 / 負 682，Claude 標注）
+        test_data.json      234 筆測試資料（正 58 / 負 176，Claude 標注）
+  experiments/
+    fusion.py          L1/L2 融合公式研究主檔
+    detector_eval.ipynb  Colab 評估 notebook（含 fine-tune）
+  tests/
+    test_detector.py   基本 regression test
+  docs/
+    overview.md        本文件（名詞定義、流程圖）
+    architecture.md    偵測架構與公式設計
+    experiments.md     如何跑實驗、解讀結果
+  report/
+    experiment/
+      experiment_01.md 第一次實驗紀錄
+```
