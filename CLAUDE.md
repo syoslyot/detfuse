@@ -1,5 +1,20 @@
 # detfuse
 
+## 實驗報告
+
+實驗紀錄統一放在 `report/experiment/`，檔名格式：`experiment_XX.md`。
+
+## HuggingFace 模型
+
+Fine-tuned LoRA adapter 上傳至：`syoslyot/qwen-detfuse-finetuned`
+https://huggingface.co/syoslyot/qwen-detfuse-finetuned
+
+載入方式：
+```python
+from peft import PeftModel
+model = PeftModel.from_pretrained(base_model, 'syoslyot/qwen-detfuse-finetuned')
+```
+
 ## 訓練與測試資料
 
 標記資料放在 `data/categories/free_food/`，由 Claude Code 判斷標記：
@@ -26,4 +41,11 @@ https://colab.research.google.com/github/syoslyot/detfuse/blob/<branch>/experime
 ```
 
 - `?authuser=1` 固定保留，確保開啟正確的 Google 帳號
-- feature 分支 merge 到 main 後，URL 裡的分支名稱要從 `feature/*` 改成 `main`
+- Colab URL 平時指向 `develop`，release merge 到 main 後改成 `main`
+
+## Colab 存檔與結果保存
+
+- 跑完實驗後，直接存回**當前 feature 分支**（不需切換到 develop）
+- outputs 存在 `.ipynb` JSON 裡，PR merge 時會一起帶進 develop，無需額外處理
+- notebook cell 6 的 `BRANCH` 變數必須與當前工作分支一致，否則資料載入 URL 會壞掉
+- 開新 feature 分支時，記得同步更新 `BRANCH` 的值
