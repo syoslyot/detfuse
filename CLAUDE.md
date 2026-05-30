@@ -26,4 +26,5 @@ https://colab.research.google.com/github/syoslyot/detfuse/blob/<branch>/experime
 ```
 
 - `?authuser=1` 固定保留，確保開啟正確的 Google 帳號
-- feature 分支 merge 到 main 後，URL 裡的分支名稱要從 `feature/*` 改成 `main`
+- Colab URL 平時指向 `develop`，release merge 到 main 後改成 `main`
+- 從哪個分支開啟，就只能存回那個分支（SHA 綁定），請從 `develop` URL 開啟
