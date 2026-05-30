@@ -1,5 +1,20 @@
 # detfuse
 
+## 實驗報告
+
+實驗紀錄統一放在 `report/experiment/`，檔名格式：`experiment_XX.md`。
+
+## HuggingFace 模型
+
+Fine-tuned LoRA adapter 上傳至：`syoslyot/qwen-detfuse-finetuned`
+https://huggingface.co/syoslyot/qwen-detfuse-finetuned
+
+載入方式：
+```python
+from peft import PeftModel
+model = PeftModel.from_pretrained(base_model, 'syoslyot/qwen-detfuse-finetuned')
+```
+
 ## 訓練與測試資料
 
 標記資料放在 `data/categories/free_food/`，由 Claude Code 判斷標記：
