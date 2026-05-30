@@ -1,0 +1,53 @@
+# 實驗結果
+
+## 實驗設置
+
+```{python}
+#| echo: false
+#| label: tbl-dataset
+#| tbl-cap: "資料集統計"
+
+import pandas as pd
+
+df = pd.DataFrame({
+    "": ["training_data.json", "test_data.json"],
+    "筆數": [894, 234],
+    "正例（免費食物）": [212, 58],
+    "負例": [682, 176],
+    "正負比": ["1:3.2", "1:3.0"],
+})
+df.set_index("", inplace=True)
+df
+```
+
+## L1 基準效能
+
+（待填入實驗數據）
+
+## L2 效能
+
+（待填入實驗數據）
+
+## 融合後效能
+
+（待填入實驗數據）
+
+## Grid Search 結果
+
+```{python}
+#| echo: false
+#| label: fig-gridsearch
+#| fig-cap: "α 與 threshold 的 F1 分布（Grid Search）"
+
+# 等 experiments/fusion.py 跑完後填入資料
+import matplotlib.pyplot as plt
+import numpy as np
+
+# placeholder
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.set_xlabel("threshold")
+ax.set_ylabel("F1 Score")
+ax.set_title("Grid Search（待更新）")
+plt.tight_layout()
+plt.show()
+```
