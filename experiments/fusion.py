@@ -63,13 +63,14 @@ def l1_score(text: str) -> float:
 # ── L2: Qwen probability ──────────────────────────────────────────────────────
 
 _PROMPT = (
-    "判斷以下貼文是否在提供免費食物或飲料（可以現在就去拿）。"
-    "只回答 yes 或 no。\n\n貼文：{text}"
+    "判斷以下貼文是否在提供免費食物或飲料（可以現在就去拿）。\n"
+    "請只輸出 0 到 9 的整數，代表信心程度（0 = 完全不是，9 = 完全確定是）。不要輸出其他任何文字。\n\n"
+    "貼文：{text}"
 )
 
 
 def l2_prob(text: str) -> float:
-    """Query Qwen via Ollama; return 1.0 for yes, 0.0 for no."""
+    """Query Qwen via Ollama; return a probability in [0, 1] based on a 0-9 confidence digit."""
     if not config.OLLAMA_ENABLED:
         return 0.5                          # neutral when disabled
     try:
@@ -78,8 +79,11 @@ def l2_prob(text: str) -> float:
             json={"model": config.OLLAMA_MODEL, "prompt": _PROMPT.format(text=text[:500]), "stream": False},
             timeout=15,
         )
-        answer = resp.json().get("response", "").strip().lower()
-        return 1.0 if answer.startswith("yes") else 0.0
+        answer = resp.json().get("response", "").strip()
+        for ch in answer:
+            if ch.isdigit():
+                return int(ch) / 9.0
+        return 0.5                          # unparseable → neutral
     except Exception:
         return 0.5
 
@@ -93,11 +97,9 @@ def fuse(text: str, alpha: float = 0.35, threshold: float = 0.50) -> bool:
     alpha     : weight of L1 score (1-alpha goes to L2)
     threshold : minimum final score to predict True
 
-    Skip L2 when l1_score == 0.0 (no signal at all → definitely negative).
+    Both layers always run; neither has veto power over the other.
     """
     s1 = l1_score(text)
-    if s1 == 0.0:
-        return False
     s2 = l2_prob(text)
     return (alpha * s1 + (1 - alpha) * s2) > threshold
 

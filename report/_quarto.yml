@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "DetFuse：L1/L2 融合偵測研究"
+  author: "劉正"
+  date: today
+  chapters:
+    - index.qmd
+    - chapters/01-intro.qmd
+    - chapters/02-background.qmd
+    - chapters/03-methodology.qmd
+    - chapters/04-experiments.qmd
+    - chapters/05-conclusion.qmd
+
+bibliography: references.bib
+
+format:
+  pdf:
+    pdf-engine: xelatex
+    documentclass: report
+    classoption:
+      - a4paper
+      - 12pt
+    include-in-header: preamble.tex
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-depth: 3
+    lof: true          # list of figures
+    lot: true          # list of tables
+    fig-pos: "H"
+    colorlinks: true
+    geometry:
+      - top=3cm
+      - bottom=3cm
+      - left=3cm
+      - right=2.5cm

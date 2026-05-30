@@ -2,4 +2,11 @@ __pycache__/
 *.pyc
 .venv/
 .env
-data/
+data/*
+!data/categories/
+data/categories/*
+!data/categories/free_food/
+data/categories/free_food/*
+!data/categories/free_food/training_data.json
+!data/categories/free_food/test_data.json
+.claude/
