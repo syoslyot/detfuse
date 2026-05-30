@@ -4,6 +4,12 @@
 
 實驗紀錄統一放在 `report/experiment/`，檔名格式：`experiment_XX.md`。
 
+### 觸發語：寫報告
+
+說「寫報告」時：
+1. 透過 GitHub API 讀取當前分支的 `experiments/detector_eval.ipynb` 輸出內容
+2. 根據 outputs 寫入 `report/experiment/experiment_XX.md`（XX 自動遞增）
+
 ## HuggingFace 模型
 
 Fine-tuned LoRA adapter 上傳至：`syoslyot/qwen-detfuse-finetuned`
@@ -21,8 +27,8 @@ model = PeftModel.from_pretrained(base_model, 'syoslyot/qwen-detfuse-finetuned')
 
 | 檔案 | 筆數 | 正例 | 負例 |
 |------|------|------|------|
-| `training_data.json` | 894 | 212 | 682 |
-| `test_data.json` | 234 | 58 | 176 |
+| `training_data.json` | 894 | 215 | 679 |
+| `test_data.json` | 234 | 67 | 167 |
 
 欄位：`text`、`label`（1 = 免費食物，0 = 非）、`hash`、`query`、`source`
 
@@ -42,6 +48,11 @@ https://colab.research.google.com/github/syoslyot/detfuse/blob/<branch>/experime
 
 - `?authuser=1` 固定保留，確保開啟正確的 Google 帳號
 - Colab URL 平時指向 `develop`，release merge 到 main 後改成 `main`
+
+## Notebook 修改工作流程
+
+改完 `experiments/detector_eval.ipynb` 後，**立即 commit + push** 到當前分支。
+使用者會重新整理 Colab 來驗證改動，必須先看到最新版本。
 
 ## Colab 存檔與結果保存
 
