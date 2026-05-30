@@ -49,8 +49,8 @@ model = PeftModel.from_pretrained(base_model, 'syoslyot/qwen-detfuse-finetuned')
 
 | 檔案 | 筆數 | 正例 | 負例 | 用途 |
 |------|------|------|------|------|
-| `training_data.json` | 894 | 212 | 682 | 訓練 / 調參 |
-| `test_data.json` | 234 | 58 | 176 | 評估（Colab 使用這個） |
+| `training_data.json` | 894 | 215 | 679 | 訓練 / 調參 |
+| `test_data.json` | 234 | 67 | 167 | 評估（Colab 使用這個） |
 
 欄位：`text`、`label`（1 = 免費食物，0 = 非）、`hash`、`query`、`source`
 
@@ -73,8 +73,8 @@ Colab notebook 透過 GitHub raw URL 直接載入，不需手動上傳或掛載 
 
 | | 筆數 | 正例 | 負例 | 正負比 |
 |--|------|------|------|------|
-| `training_data.json` | 894 | 212 | 682 | 1:3.2 |
-| `test_data.json` | 234 | 58 | 176 | 1:3.0 |
+| `training_data.json` | 894 | 215 | 679 | 1:3.2 |
+| `test_data.json` | 234 | 67 | 167 | 1:2.5 |
 
 來源：11 個 query，stratified split by (label × source)，seed=42，80/20。
 
