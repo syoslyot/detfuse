@@ -17,10 +17,31 @@ ollama pull qwen2.5:0.5b
 notebook 位於 `experiments/detector_eval.ipynb`，托管在 GitHub，可直接從以下連結在 Colab 開啟：
 
 ```
-https://colab.research.google.com/github/syoslyot/detfuse/blob/feature/parallel-fusion/experiments/detector_eval.ipynb?authuser=1
+https://colab.research.google.com/github/syoslyot/detfuse/blob/develop/experiments/detector_eval.ipynb?authuser=1
 ```
 
-> `?authuser=1` 固定保留。feature 分支 merge 到 main 後，URL 裡的分支名稱要改成 `main`。
+> `?authuser=1` 固定保留。平時指向 `develop`，release merge 到 main 後改成 `main`。
+
+### 存檔工作流程
+
+- 跑完實驗後，存回**當前 feature 分支**即可，不需特別切換到 develop
+- outputs 是 `.ipynb` JSON 的一部分，PR merge 時自動帶進 develop
+- 開新 feature 分支時，同步更新 notebook cell 6 的 `BRANCH` 變數，讓資料載入 URL 指向正確分支
+
+## 實驗報告
+
+實驗紀錄統一放在 `report/experiment/`，檔名格式：`experiment_XX.md`。
+
+## HuggingFace 模型
+
+Fine-tuned LoRA adapter：[syoslyot/qwen-detfuse-finetuned](https://huggingface.co/syoslyot/qwen-detfuse-finetuned)
+
+```python
+from peft import PeftModel
+model = PeftModel.from_pretrained(base_model, 'syoslyot/qwen-detfuse-finetuned')
+```
+
+> 基礎模型：`Qwen/Qwen2.5-0.5B-Instruct`，需另外載入。
 
 ## 訓練與測試資料
 
