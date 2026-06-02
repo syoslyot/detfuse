@@ -10,6 +10,22 @@
 1. 透過 GitHub API 讀取當前分支的 `experiments/detector_eval.ipynb` 輸出內容
 2. 根據 outputs 寫入 `report/experiment/experiment_XX.md`（XX 自動遞增）
 
+### 觸發語：correct review XX
+
+說「correct review XX」時：
+1. 讀取 `report/review/review_experiment_XX.md`（XX 為對應數字）
+2. 同時讀取對應的 `report/experiment/experiment_XX.md` 了解原始實驗脈絡
+3. 針對評閱中的每一條批判、提問與建議，逐項撰寫回答與反思
+4. 將結果寫入 `report/correct/correct_review_XX.md`（XX 對應評閱數字）
+
+回應原則：
+- 逐節對應評閱的結構（可重現性 / 評估方法 / 結論有效性 / 下一步）
+- 明確區分「問題已修正」、「問題確認，計劃修正」、「問題確認，納入記錄」
+- 若後續實驗已解決該問題（如 seed 固定），引用對應的 experiment_XX 說明
+- 有具體行動計劃的項目需列出行動內容
+
+---
+
 ### 觸發語：review experiment_XX
 
 說「review experiment_XX」時，讀取 `report/experiment/experiment_XX.md`，以下列 prompt 身份進行批改，並將結果寫入 `report/review/review_experiment_XX.md`（XX 對應審查的那份數字）：
