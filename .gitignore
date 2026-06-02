@@ -9,4 +9,7 @@ data/categories/*
 data/categories/free_food/*
 !data/categories/free_food/training_data.json
 !data/categories/free_food/test_data.json
+!data/correct/
+data/correct/*
+!data/correct/*.md
 .claude/
