@@ -16,7 +16,7 @@
 1. 讀取 `report/review/review_experiment_XX.md`（XX 為對應數字）
 2. 同時讀取對應的 `report/experiment/experiment_XX.md` 了解原始實驗脈絡
 3. 針對評閱中的每一條批判、提問與建議，逐項撰寫回答與反思
-4. 將結果寫入 `data/correct/correct_review_XX.md`（XX 對應評閱數字）
+4. 將結果寫入 `report/correct/correct_review_XX.md`（XX 對應評閱數字）
 
 回應原則：
 - 逐節對應評閱的結構（可重現性 / 評估方法 / 結論有效性 / 下一步）
